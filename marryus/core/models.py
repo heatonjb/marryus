@@ -14,7 +14,6 @@ class Wedding(models.Model):
     description = models.TextField()
     created = models.DateTimeField(_("date added"), default=datetime.now, editable=False)
     updated = models.DateTimeField(auto_now=True)
-#    created_by  
 
 class Goal(models.Model):
     wedding = models.ForeignKey(Wedding)

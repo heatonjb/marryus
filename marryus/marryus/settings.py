@@ -1,4 +1,4 @@
-import os
+import os, socket
 # Django settings for marryus project.
 
 DEBUG = True
@@ -7,6 +7,9 @@ TEMPLATE_DEBUG = DEBUG
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
+if socket.gethostname() == 'devserver':
+    LIVE = True
+    
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -100,7 +103,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'marryus.urls'
+
+if LIVE:
+    ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'marryus.wsgi.application'
